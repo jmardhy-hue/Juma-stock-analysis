@@ -1,0 +1,417 @@
+{
+  "ticker": "COIN",
+  "nama_emiten": "Indokripto Koin Semesta Tbk",
+  "tanggal_analisa": "2026-11-11",
+  "tanggal_data": "2026-11-10",
+  "harga_terakhir": "292",
+  "sumber_harga": "Investing.com",
+  "status_harga": "belum terkonfirmasi live",
+  "input_capt_juma": "COIN, harga trkhr 292, bs buy 280 - 286, target harian 298 - 303, target seminggu 310 - 320, target sebulan 330 - 340, modal 10 jt",
+  "asumsi": [
+    "Belum punya posisi",
+    "Biaya beli 0,15% dan jual 0,25%",
+    "Fraksi harga Rp2 untuk rentang 200–500 (perlu diverifikasi)"
+  ],
+  "modal": 10000000,
+  "kesimpulan": {
+    "sikap": "BUY",
+    "judul_sikap": "Booking di pullback sebelum market buka",
+    "ringkasan": "Dasar 248–280 membentuk higher low beruntun dan momentum membaik, tetapi kenaikan 10 Nov belum didukung volume (RVOL 0,47x). Karena itu entry tidak dikejar: booking di 284, dekat support 280, dengan stop rapat di bawah higher low 276.",
+    "entry": "284 dekat support 280 dan di dalam rentang buy 280–286. Order limit tidak terisi di atas 284",
+    "stop": "Close harian <276 (higher low terakhir). Eksekusi pre-closing hari itu atau booking jual pre-opening besok",
+    "take_profit": [
+      {
+        "level": "TP1",
+        "harga": "298",
+        "persen": "+4,9% dari 284",
+        "porsi_persen": 50
+      },
+      {
+        "level": "TP2",
+        "harga": "310",
+        "persen": "+9,2%",
+        "porsi_persen": 25
+      },
+      {
+        "level": "TP3",
+        "harga": "330",
+        "persen": "+16,2%",
+        "porsi": "sisa"
+      }
+    ],
+    "pl": "KANDIDAT 5/6 — gagal: volume hari naik (RVOL 0,47x). Zona 279–292, jangan kejar >296, target harian 298–303, stop PL close <256 (terlalu jauh; pakai stop rapat <276). Target harian Capt Juma 298–303 sama dengan target PL.",
+    "pemicu_perubahan": "Booking dibatalkan dan sikap jadi HOLD kalau close <280 malam ini. Jadi EXIT-STOP kalau close <276. Jadi TAKE PROFIT kalau TP1 298 tersentuh.",
+    "booking": {
+      "harga": 284,
+      "batal_jika": "ada berita negatif semalam, UMA, atau harga pre-opening di bawah 276"
+    },
+    "posisi": null,
+    "stop_harga": 276
+  },
+  "bagian": [
+    {
+      "kode": "A",
+      "judul": "Persiapan & data",
+      "kolom": [
+        "No",
+        "Tahap",
+        "Hasil",
+        "Keterangan"
+      ],
+      "lebar": [
+        0.05,
+        0.17,
+        0.48,
+        0.3
+      ],
+      "baris": [
+        [
+          "1",
+          "Baca input",
+          "Harga 292, buy 280–286, target harian 298–303, mingguan 310–320, bulanan 330–340",
+          "Stop dan posisi tidak disebut → asumsi belum punya posisi"
+        ],
+        [
+          "2",
+          "Ambil data harga",
+          "27 bar harian, 5 Okt – 10 Nov 2026",
+          "Investing.com (historical data)"
+        ],
+        [
+          "3",
+          "Simpan & cocokkan",
+          "Close 10 Nov = 292, sama dengan input",
+          "Belum terkonfirmasi live"
+        ],
+        [
+          "4",
+          "Jalankan indikator",
+          "indikator.py berhasil, MACD tersedia",
+          "≥26 bar"
+        ]
+      ]
+    },
+    {
+      "kode": "B",
+      "judul": "Teknikal",
+      "kolom": [
+        "No",
+        "Tahap",
+        "Indikator",
+        "Nilai",
+        "Arti",
+        "Sinyal"
+      ],
+      "lebar": [
+        0.05,
+        0.13,
+        0.15,
+        0.19,
+        0.41,
+        0.07
+      ],
+      "baris": [
+        [
+          "5",
+          "Tren & MA",
+          "MA5 / MA10 / MA20",
+          "280 / 289 / 362",
+          "Harga di atas MA5–10, masih −19,3% dari MA20. Pemulihan awal di dalam downtrend",
+          "●"
+        ],
+        [
+          "6",
+          "Momentum",
+          "RSI14",
+          "21,6",
+          "Oversold (<30), naik dari 11 dan 15",
+          "▲"
+        ],
+        [
+          "6",
+          "Momentum",
+          "MACD hist",
+          "+4,7 (sebelumnya +1,2)",
+          "Momentum membaik, MACD line masih −93",
+          "▲"
+        ],
+        [
+          "7",
+          "Volatilitas",
+          "ATR14 · %B",
+          "36,7 (12,6%) · 0,30",
+          "Sangat volatil. Target harian 298 hanya 0,2 ATR",
+          "●"
+        ],
+        [
+          "8",
+          "Volume / flow",
+          "RVOL · CMF · MFI",
+          "0,47x · −0,29 · 15,8",
+          "Kenaikan 10 Nov tidak didukung volume, aliran dana masih keluar",
+          "▼"
+        ],
+        [
+          "9",
+          "Struktur & S/R",
+          "Swing · S · R",
+          "Low 248→258→256→276→280",
+          "Higher low beruntun. Support 280, 276, 256, 248. Resistance 298, 310, 334",
+          "▲"
+        ],
+        [
+          "10",
+          "Status oversold",
+          "Composite (proxy)",
+          "70/100 · DD −53,7%",
+          "Tekanan jual mereda (87→80→70). Bukan peluang rebound",
+          "●"
+        ],
+        [
+          "11",
+          "Jarak target",
+          "Target vs ATR",
+          "298 +0,2 · 310 +0,5 · 330 +1,0 ATR",
+          "Target harian dan mingguan wajar, bulanan butuh tembus 310–334",
+          "●"
+        ]
+      ]
+    },
+    {
+      "kode": "C",
+      "judul": "Berita & fundamental",
+      "kolom": [
+        "No",
+        "Tahap",
+        "Item",
+        "Temuan",
+        "Dampak",
+        "Tanggal"
+      ],
+      "lebar": [
+        0.05,
+        0.13,
+        0.15,
+        0.48,
+        0.09,
+        0.1
+      ],
+      "baris": [
+        [
+          "12",
+          "Berita & katalis",
+          "Berita 1–4 minggu",
+          "Tidak ditemukan berita baru November 2026, tidak ada UMA/suspensi",
+          "0",
+          "Nov 2026"
+        ],
+        [
+          "13",
+          "Fundamental",
+          "Kinerja 9M 2026",
+          "Rugi Rp40,78 miliar, pendapatan turun ~35%",
+          "−",
+          "Okt 2026"
+        ],
+        [
+          "13",
+          "Fundamental",
+          "Tren kuartalan",
+          "Pendapatan turun tiga kuartal berturut-turut, penurunan melambat. Segmen derivatif tumbuh",
+          "0",
+          "Q3 2026"
+        ],
+        [
+          "13",
+          "Fundamental",
+          "Prospek hold",
+          "Spekulatif: masih rugi dan pendapatan menurun. Tinjau ulang setelah laporan Q4",
+          "−",
+          "—"
+        ]
+      ]
+    },
+    {
+      "kode": "D",
+      "judul": "Validasi rencana Capt Juma",
+      "kolom": [
+        "No",
+        "Parameter",
+        "Data Capt Juma",
+        "Hasil analisa JSA",
+        "Catatan"
+      ],
+      "lebar": [
+        0.05,
+        0.17,
+        0.2,
+        0.33,
+        0.25
+      ],
+      "baris": [
+        [
+          "1",
+          "Harga terakhir",
+          "292",
+          "292 (close 10 Nov)",
+          "Belum terkonfirmasi live"
+        ],
+        [
+          "2",
+          "Entry",
+          "280–286",
+          "Booking 284 (lihat lot di Kesimpulan)",
+          "Order limit, tidak dikejar"
+        ],
+        [
+          "3",
+          "Stop / batal",
+          "—",
+          "Close harian <276",
+          "Stop PL 256 terlalu jauh (~10%)"
+        ],
+        [
+          "4",
+          "Target harian",
+          "298–303 (+2,1% – +3,8%)",
+          "298–303, realistis (0,2–0,3 ATR)",
+          "Resistance 298"
+        ],
+        [
+          "5",
+          "Target 1 minggu",
+          "310–320 (+6,2% – +9,6%)",
+          "310 realistis, 320 butuh volume",
+          "Resistance 310–312"
+        ],
+        [
+          "6",
+          "Target 1 bulan",
+          "330–340 (+13,0% – +16,4%)",
+          "Ambisius, perlu tembus 334",
+          "Resistance 334–340"
+        ],
+        [
+          "7",
+          "Entry lagi (HPP)",
+          "—",
+          "256–262 hanya dengan ekor bawah dan close > open",
+          "Tanpa average down otomatis"
+        ],
+        [
+          "8",
+          "Perlu turunkan HPP?",
+          "—",
+          "Tidak relevan",
+          "Belum punya posisi"
+        ],
+        [
+          "9",
+          "Status oversold",
+          "—",
+          "RSI 21,6 oversold · composite 70/100",
+          "Mereda"
+        ],
+        [
+          "10",
+          "Sikap",
+          "—",
+          "**BUY** (booking 284)",
+          "HOLD kalau close <280"
+        ]
+      ]
+    },
+    {
+      "kode": "E",
+      "judul": "Pola Pantul Lantai (PL)",
+      "kolom": [
+        "No",
+        "Syarat PL",
+        "Jenis",
+        "Ambang",
+        "Nilai",
+        "Hasil"
+      ],
+      "lebar": [
+        0.05,
+        0.22,
+        0.1,
+        0.27,
+        0.27,
+        0.09
+      ],
+      "baris": [
+        [
+          "18",
+          "Konteks oversold",
+          "Wajib",
+          "RSI <35 dan close ≤ MA20 − 1,5 ATR",
+          "RSI 21,6 · −1,91 ATR",
+          "LOLOS"
+        ],
+        [
+          "19",
+          "Lantai bertahan",
+          "Wajib",
+          "Low ≥ low 5 hari − 1,5%",
+          "Low 280 vs lantai 248",
+          "LOLOS"
+        ],
+        [
+          "20",
+          "Hari sinyal naik",
+          "Wajib",
+          "Close > close kemarin",
+          "+2,82%",
+          "LOLOS"
+        ],
+        [
+          "21",
+          "Tidak ditutup di low",
+          "Pendukung",
+          "Close location ≥0,35",
+          "0,67",
+          "LOLOS"
+        ],
+        [
+          "22",
+          "Volume ikut di hari naik",
+          "Pendukung",
+          "RVOL ≥0,7x",
+          "0,47x",
+          "GAGAL"
+        ],
+        [
+          "23",
+          "Momentum membaik",
+          "Pendukung",
+          "MACD hist naik",
+          "+1,2 → +4,7",
+          "LOLOS"
+        ],
+        [
+          "—",
+          "**KANDIDAT 5/6**",
+          "",
+          "Zona 279–292 · jangan kejar >296",
+          "Target 298–303 · stop close <256",
+          ""
+        ]
+      ]
+    }
+  ],
+  "sumber": [
+    {
+      "judul": "Investing.com – data historis COIN",
+      "url": "https://www.investing.com/equities/indokripto-koin-semesta-tbk-pt-historical-data"
+    },
+    {
+      "judul": "Warta Ekonomi – pendapatan anjlok 35%, COIN rugi Rp40,78 miliar",
+      "url": "https://wartaekonomi.co.id/read644232/pendapatan-anjlok-35-indokripto-coin-rugi-rp4078-miliar"
+    },
+    {
+      "judul": "Feedberry – segmen derivatif Q3",
+      "url": "https://feedberry.com/artikel/coin-derivatif-481-pendapatan-tapi-total-turun-486"
+    }
+  ]
+}

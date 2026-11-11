@@ -1,0 +1,3 @@
+# Juma Stock Analysis — library Python
+# Pasang dengan: python -m pip install -r requirements.txt
+reportlab>=4.0
