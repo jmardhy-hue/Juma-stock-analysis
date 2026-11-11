@@ -67,7 +67,7 @@ Hasil akhirnya adalah **satu file PDF A4 dua halaman** di `hasil-analisa/YYYY-MM
 
 ## Tampilan di chat
 - Tulis **satu baris progres** per tahap (lihat skill). Jangan menulis ulang seluruh angka mentah.
-- Setelah PDF jadi, tulis ringkasan pendek (sikap, entry, stop, TP, status PL) dan tautan ke file PDF-nya.
+- Setelah PDF jadi, kirim file PDF-nya. **Jangan menjelaskan hasil analisa di chat** (tanpa ringkasan); prosesnya cukup lewat baris progres.
 
 ## Aturan perubahan sistem
 Setiap kali skill, skrip, ambang, atau format diubah, **tambahkan entri di `log-perubahan/CHANGELOG.md`**

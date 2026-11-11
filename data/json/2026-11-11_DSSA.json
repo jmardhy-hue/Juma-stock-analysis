@@ -67,26 +67,26 @@
         [
           "1",
           "Baca input",
-          "DSSA, 685, buy 670-680, harian 680-690, mingguan 700-715, bulanan 735-755, modal Rp500.000",
-          "Rentang buy dibalik; stop dan posisi tidak disebut, jadi asumsi"
+          "DSSA 685 · buy 670-680 · harian 680-690 · mingguan 700-715 · bulanan 735-755 · modal Rp500.000",
+          "Rentang buy dibalik; stop dan posisi tidak disebut"
         ],
         [
           "2",
           "Ambil data harga",
           "50 bar harian, 3 Sep - 11 Nov 2026",
-          "stockanalysis.com; Investing.com diblokir (403/DNS)"
+          "stockanalysis.com"
         ],
         [
           "3",
           "Simpan & cocokkan",
-          "Close 11 Nov = 745, close 10 Nov = 700",
-          "Input 685 lebih rendah 8,1% dari 745; sama dengan close 29 Okt (685). Belum terkonfirmasi live"
+          "Close 11 Nov 745 · 10 Nov 700",
+          "Input 685 beda 8,1% (sama dgn close 29 Okt). Belum live"
         ],
         [
           "4",
           "Jalankan indikator",
-          "indikator.py berhasil, MACD tersedia",
-          "50 bar (min 26). Harga ref = close 745"
+          "indikator.py berhasil (50 bar, MACD tersedia)",
+          "Harga ref = close 745"
         ]
       ]
     },
@@ -103,10 +103,10 @@
       ],
       "lebar": [
         0.05,
-        0.13,
-        0.15,
-        0.19,
-        0.41,
+        0.12,
+        0.14,
+        0.28,
+        0.34,
         0.07
       ],
       "baris": [
@@ -115,7 +115,7 @@
           "Tren & MA",
           "MA5/10/20/50",
           "678 / 672,5 / 704 / 934",
-          "Harga di atas MA5-20 (+9,9% / +10,8% / +5,9%) tapi -20,3% dari MA50. Pemulihan, belum keluar dari downtrend besar",
+          "Di atas MA5-20 (+9,9% / +10,8% / +5,9%), -20,3% dari MA50. Pemulihan, belum keluar downtrend",
           "●"
         ],
         [
@@ -131,7 +131,7 @@
           "Momentum",
           "MACD hist",
           "+17,4 (sebelumnya +11,0)",
-          "Momentum membaik; MACD -75,5 di atas signal -92,8 tapi masih negatif",
+          "Momentum membaik; MACD -75,5 di atas signal -92,8",
           "▲"
         ],
         [
@@ -139,7 +139,7 @@
           "Volatilitas",
           "ATR14 · %B",
           "69 (9,3%) · 0,69",
-          "Sangat volatil. Range 11 Nov 700-785. Target harian kecil mudah tersentuh, stop rapat mudah tersapu",
+          "Sangat volatil (range 11 Nov 700-785). Stop rapat mudah tersapu",
           "●"
         ],
         [
@@ -147,7 +147,7 @@
           "Volume / flow",
           "RVOL · CMF · MFI",
           "1,05x · -0,01 · 63,4",
-          "Volume normal, aliran dana netral, tanpa lonjakan pendukung",
+          "Volume normal, aliran dana netral",
           "●"
         ],
         [
@@ -155,7 +155,7 @@
           "Struktur & S/R",
           "Swing · S · R",
           "Low 575 > 680 > 700",
-          "Higher low terbentuk. Support 700, 680, 650, 575. Resistance 785 (high 11 Nov), 885 (high 20 hari), 934 (MA50)",
+          "Higher low. Support 700, 680, 650, 575. Resistance 785, 885, 934",
           "▲"
         ],
         [
@@ -163,7 +163,7 @@
           "Status oversold",
           "Composite (proxy)",
           "12/100 · DD -15,8%",
-          "Tidak oversold. Jarak MA20 +0,60 ATR. Bukan zona beli oversold",
+          "Tidak oversold (jarak MA20 +0,60 ATR)",
           "●"
         ],
         [
@@ -171,7 +171,7 @@
           "Jarak target",
           "Dari 745",
           "680 -8,7% · 690 -7,4% · 700 -6,0% · 715 -4,0% · 735 -1,3% · 755 +1,3%",
-          "Target harian dan mingguan sudah di bawah harga 745. Hanya 755 di atas harga (+0,1 ATR)",
+          "Target harian dan mingguan sudah di bawah 745; hanya 755 di atas (+0,1 ATR)",
           "▼"
         ]
       ]
@@ -200,15 +200,15 @@
           "12",
           "Berita & katalis",
           "Sanksi OJK",
-          "OJK menjatuhkan sanksi denda terkait dugaan manipulasi pasar saham DSSA, BREN, CUAN. Manajemen DSSA: tidak material bagi keuangan dan operasional",
+          "Denda administratif terkait dugaan manipulasi saham DSSA, BREN, CUAN. Manajemen: tidak material",
           "−",
-          "16-21 Okt 2026"
+          "16-21 Okt"
         ],
         [
           "12",
           "Berita & katalis",
           "Tekanan jual",
-          "Kapitalisasi pasar disebut turun ~82% YTD (Bisnis.com); sumber lain menyebut turun 33,17% sepanjang Oktober. Angka beda antar sumber",
+          "Kapitalisasi pasar disebut turun ~82% YTD (Bisnis.com); sumber lain: turun 33,17% di Okt. Angka beda antar sumber",
           "−",
           "Okt 2026"
         ],
@@ -216,23 +216,23 @@
           "12",
           "Berita & katalis",
           "Katalis 9-11 Nov",
-          "Penyebab lonjakan 9 Nov (+17,5%) dan 11 Nov (+6,4%) tidak ditemukan di hasil pencarian",
+          "Penyebab lonjakan 9 dan 11 Nov tidak ditemukan",
           "0",
-          "9-11 Nov 2026"
+          "9-11 Nov"
         ],
         [
           "13",
           "Fundamental",
           "Kinerja terakhir",
-          "Kuartal I 2026: pendapatan US$693,24 jt (turun dari 737,55 jt), laba US$118,46 jt (turun dari 135,06 jt). Kuartal III 2026 belum ditemukan",
+          "Kuartal I 2026: pendapatan US$693,24 jt (vs 737,55 jt), laba US$118,46 jt (vs 135,06 jt). Kuartal III belum ditemukan",
           "−",
-          "Kuartal I 2026"
+          "Kuartal I"
         ],
         [
           "13",
           "Fundamental",
           "Prospek hold",
-          "Spekulatif: volatil tinggi, isu sanksi, laba melemah. Tinjau ulang setelah laporan kuartal III",
+          "Spekulatif: volatil, isu sanksi, laba melemah. Tinjau setelah laporan kuartal III",
           "−",
           "—"
         ]
@@ -261,56 +261,56 @@
           "Harga terakhir",
           "685",
           "745 (close 11 Nov, +6,43%)",
-          "Selisih +8,8% vs input. Belum terkonfirmasi live"
+          "Selisih +8,8% vs input. Belum live"
         ],
         [
           "2",
           "Entry",
           "670-680",
           "Tidak ada booking malam ini",
-          "745 ada 9,6% di atas 680: jangan kejar. Zona 670-680 sejajar MA5/MA10 dan low 10 Nov"
+          "745 ada 9,6% di atas 680: jangan kejar. 670-680 = MA5/MA10 dan low 10 Nov"
         ],
         [
           "3",
           "Stop / batal",
           "—",
           "Close harian < 650",
-          "Hanya relevan bila kelak booking 680. Risiko 30 poin (4,4%), 0,43 ATR"
+          "Hanya jika booking 680 terisi. Risiko 30 poin (4,4%)"
         ],
         [
           "4",
           "Target harian",
           "680-690",
           "690 (+1,5% dari 680)",
-          "Dari 745 sudah -7,4%. Setelah biaya 0,4% (~Rp2,7/lembar) sisa ~Rp7,3. R/R kasar 0,33"
+          "Dari 745 sudah -7,4%. Biaya 0,4% (~Rp2,7) sisakan ~Rp7,3. R/R kasar 0,33"
         ],
         [
           "5",
           "Target 1 minggu",
           "700-715",
           "715 (+5,1% dari 680)",
-          "Resistance 700, 705 (close 9 Nov), 730 (high 10 Nov). R/R kasar 1,17"
+          "Resistance 700-705, 730. R/R kasar 1,17"
         ],
         [
           "6",
           "Target 1 bulan",
           "735-755",
           "755 (+11,0% dari 680)",
-          "Perlu tembus 785 (high 11 Nov). R/R kasar 2,50. Ambisius untuk saham volatil"
+          "Perlu tembus 785. R/R kasar 2,50. Ambisius"
         ],
         [
           "7",
           "Entry lagi (HPP)",
           "—",
           "—",
-          "Hanya dengan ekor bawah dan close > open di zona 650-660, budget risiko sama. Tanpa average down otomatis"
+          "Hanya dengan ekor bawah + close > open di 650-660, budget risiko sama"
         ],
         [
           "8",
           "Perlu turunkan HPP?",
           "—",
           "—",
-          "Tidak relevan, belum punya posisi"
+          "Tidak relevan (belum punya posisi)"
         ],
         [
           "9",
@@ -324,7 +324,7 @@
           "Sikap",
           "—",
           "**HOLD**",
-          "Tunggu. Pemicu jadi BUY ada di kotak Kesimpulan"
+          "Tunggu. Pemicu BUY ada di Kesimpulan"
         ]
       ]
     },
@@ -421,12 +421,28 @@
       "url": "https://insight.kontan.co.id/news/manajemen-dssa-buka-suara-soal-sanksi-ojk"
     },
     {
-      "judul": "Investortrust - OJK serahkan surat sanksi terkait DSSA, BREN, CUAN",
-      "url": "https://investortrust.id/market/120080/ojk-serahkan-surat-sanksi-kepada-semua-pihak-pelanggar-ketentuan-terkait-emiten-dssa-bren-dan-cuan"
-    },
-    {
       "judul": "Investortrust - Pendapatan DSSA turun 6% kuartal I 2026",
       "url": "https://investortrust.id/market/108075/pendapatan-dian-swastatika-dssa-turun-6-laba-bersih-tinggal-segini-di-kuartal-i-2026"
+    },
+    {
+      "judul": "RCTI+ - Absen bagi dividen, DSSA putuskan simpan laba",
+      "url": "https://www.rctiplus.com/news/detail/ekonomi/5404497/absen-bagi-dividen--dssa-putuskan-simpan-laba"
+    },
+    {
+      "judul": "Kontan - DSSA punya mesin pertumbuhan baru: data center",
+      "url": "https://investasi.kontan.co.id/news/unit-bisnis-sinar-mas-dssa-punya-mesin-pertumbuhan-baru-data-center-capai-1-gw"
+    }
+  ],
+  "answer": [
+    {
+      "pertanyaan": "Apakah masih ada peluang entry sekarang untuk mendapatkan profit 5-10%?",
+      "jawaban": "TIDAK",
+      "penjelasan": "Di harga 745, belum. Target +5% = 782 dan +10% = 820, padahal resistance 785 (high 11 Nov) hanya +5,4% dan stop logis (close <700) berjarak -6,0%: R/R kasar ~0,83 ke +5% dan ~1,66 ke +10%, dengan ATR 9,3%. Profit 5-10% lebih masuk akal dari booking ~680 (target 714-748), tetapi harga belum di zona itu."
+    },
+    {
+      "pertanyaan": "Apakah saham cocok untuk jangka panjang? (pengembangan perusahaan dan dividen)",
+      "jawaban": "TIDAK",
+      "penjelasan": "Pengembangan: masuk data center (SM+ 10 → 43 MW akhir 2026) dan panas bumi (potensi 440 MW), tetapi energi/tambang masih ~80% pendapatan, ekspansi butuh dana besar, hasilnya jangka menengah. Dividen: tahun buku 2025 tidak dibagi (laba US$230,54 jt ditahan; payout 0%). Laba kuartal I 2026 turun dan ada sanksi OJK. Cocok untuk trading, bukan investasi dividen. Dasar: ringkasan hasil pencarian."
     }
   ]
 }

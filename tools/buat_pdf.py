@@ -18,13 +18,13 @@ import sys
 
 try:
     from reportlab.lib import colors
-    from reportlab.lib.enums import TA_LEFT
+    from reportlab.lib.enums import TA_CENTER, TA_LEFT
     from reportlab.lib.pagesizes import A4
     from reportlab.lib.styles import ParagraphStyle
     from reportlab.lib.units import cm
     from reportlab.pdfbase import pdfmetrics
     from reportlab.pdfbase.ttfonts import TTFont
-    from reportlab.platypus import (KeepTogether, PageBreak, Paragraph, SimpleDocTemplate,
+    from reportlab.platypus import (CondPageBreak, KeepTogether, PageBreak, Paragraph, SimpleDocTemplate,
                                     Spacer, Table, TableStyle)
 except ImportError:
     print("ERROR: library reportlab belum terpasang. Jalankan: python -m pip install -r requirements.txt")
@@ -50,6 +50,7 @@ SIKAP = {
 NAVY = colors.HexColor("#14213D")
 GARIS = colors.HexColor("#C9CED6")
 ABU_MUDA = colors.HexColor("#F2F4F7")
+MAGENTA = colors.HexColor("#B5179E")
 WARNA_SEL = {
     "▲": "#1E7B34", "+": "#1E7B34", "LOLOS": "#1E7B34",
     "▼": "#B3261E", "−": "#B3261E", "-": "#B3261E", "GAGAL": "#B3261E",
@@ -109,7 +110,7 @@ def gaya(ukuran):
         "sel": ParagraphStyle("sel", **dasar),
         "kepala": ParagraphStyle("kepala", **{**dasar, "fontName": FONT["tebal"], "textColor": colors.white}),
         "judul": ParagraphStyle("judul", **{**dasar, "fontName": FONT["tebal"], "fontSize": ukuran + 2.5,
-                                            "leading": (ukuran + 2.5) * 1.2, "textColor": NAVY,
+                                            "leading": (ukuran + 2.5) * 1.2, "textColor": NAVY, "keepWithNext": 1,
                                             "spaceBefore": ukuran * 0.9, "spaceAfter": ukuran * 0.35}),
         "kecil": ParagraphStyle("kecil", **{**dasar, "fontSize": ukuran - 0.8, "leading": (ukuran - 0.8) * 1.2,
                                             "textColor": colors.HexColor("#4B5563")}),
@@ -170,12 +171,7 @@ def header(d, g, lebar):
     t.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), NAVY), ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
                            ("LEFTPADDING", (0, 0), (-1, -1), 7), ("RIGHTPADDING", (0, 0), (-1, -1), 7),
                            ("TOPPADDING", (0, 0), (-1, -1), 5), ("BOTTOMPADDING", (0, 0), (-1, -1), 6)]))
-    bawah = []
-    if d.get("input_capt_juma"):
-        bawah.append(f'<b>Input Capt Juma:</b> {aman(d["input_capt_juma"])}')
-    if d.get("asumsi"):
-        bawah.append("<b>Asumsi:</b> " + "; ".join(aman(a) for a in d["asumsi"]))
-    return [t, Spacer(1, 3), Paragraph("<br/>".join(bawah), g["kecil"])] if bawah else [t]
+    return [t]
 
 
 BIAYA_BELI, BIAYA_JUAL = 0.0015, 0.0025   # asumsi, total ~0,4% pulang-pergi
@@ -311,18 +307,48 @@ def kotak_kesimpulan(k, modal, g, lebar):
     return t
 
 
+def bagian_answer(d, g, lebar):
+    """Section ANSWER: judul magenta, jawaban YA di-highlight hijau dan TIDAK merah."""
+    jawab = d.get("answer") or []
+    if not jawab:
+        return []
+    s = g["sel"]
+    rata = ParagraphStyle("ans_rata", parent=s, fontName=FONT["tebal"], alignment=TA_CENTER, textColor=colors.white)
+    judul = Paragraph("ANSWER", ParagraphStyle("ans_judul", parent=g["judul"], textColor=MAGENTA))
+    data = [[Paragraph(k, g["kepala"]) for k in ("No", "Pertanyaan", "Jawaban", "Penjelasan")]]
+    gaya = []
+    for r, a in enumerate(jawab, start=1):
+        ya = str(a.get("jawaban", "")).strip().upper()
+        data.append([Paragraph(str(r), s),
+                     Paragraph("<b>%s</b>" % aman(a.get("pertanyaan", "")), s),
+                     Paragraph(aman(ya), rata),
+                     Paragraph(aman(a.get("penjelasan", "")), s)])
+        warna = "#1E7B34" if ya == "YA" else "#B3261E" if ya == "TIDAK" else "#6B7280"
+        gaya.append(("BACKGROUND", (2, r), (2, r), colors.HexColor(warna)))
+    t = Table(data, colWidths=[lebar * 0.05, lebar * 0.27, lebar * 0.10, lebar * 0.58], repeatRows=1)
+    t.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), NAVY),
+        ("GRID", (0, 0), (-1, -1), 0.4, GARIS),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, ABU_MUDA]),
+        ("VALIGN", (2, 1), (2, -1), "MIDDLE"),
+        ("TOPPADDING", (0, 0), (-1, -1), 1.6), ("BOTTOMPADDING", (0, 0), (-1, -1), 1.8),
+        ("LEFTPADDING", (0, 0), (-1, -1), 3), ("RIGHTPADDING", (0, 0), (-1, -1), 3),
+    ] + gaya))
+    return [KeepTogether([judul, t])]
+
+
 def susun(d, ukuran, lebar):
     g = gaya(ukuran)
     isi = header(d, g, lebar)
     isi += [Spacer(1, ukuran * 0.8), kotak_kesimpulan(d.get("kesimpulan", {}), d.get("modal"), g, lebar)]
+    isi += bagian_answer(d, g, lebar)
     nama_bagian = {"A": "Persiapan & data", "B": "Teknikal", "C": "Berita & fundamental",
                    "D": "Validasi rencana Capt Juma", "E": "Pola Pantul Lantai (PL)"}
     for bag in d.get("bagian", []):
         kode = str(bag.get("kode", "")).upper()
-        if kode == "C":
-            isi.append(PageBreak())
         judul = Paragraph(f'{aman(kode)}. {aman(bag.get("judul") or nama_bagian.get(kode, ""))}', g["judul"])
-        isi.append(KeepTogether([judul, tabel_bagian(bag, g, lebar)]))
+        isi += [CondPageBreak(ukuran * 5.5), judul, tabel_bagian(bag, g, lebar)]
     if d.get("sumber"):
         isi.append(Paragraph("Sumber", g["judul"]))
         daftar = []
@@ -400,6 +426,12 @@ def periksa(d):
     for b in d.get("bagian", []):
         if str(b.get("kode", "")).upper() == "D" and len(b.get("baris", [])) < 10:
             pesan.append(f"bagian D hanya {len(b.get('baris', []))} baris, baris wajib ada 10")
+    jawab = d.get("answer") or []
+    if len(jawab) < 2:
+        pesan.append("section answer harus berisi 2 pertanyaan (peluang profit 5-10% dan jangka panjang)")
+    for a in jawab:
+        if str(a.get("jawaban", "")).strip().upper() not in ("YA", "TIDAK"):
+            pesan.append(f"jawaban answer harus YA atau TIDAK, bukan '{a.get('jawaban', '')}'")
     return pesan
 
 

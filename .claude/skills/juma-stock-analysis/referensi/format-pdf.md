@@ -2,8 +2,8 @@
 
 ## Spesifikasi tetap
 - Kertas **A4 portrait**, margin keliling **1,27 cm**, **2 halaman** per hasil.
-- Halaman 1: header, **kotak Kesimpulan berwarna** (termasuk harga booking, jumlah lot, rugi rupiah), bagian A, B.
-- Halaman 2: bagian C, D (tabel perbandingan), E (PL), sumber. Bagian 4 pertanyaan sudah dihapus (v1.1).
+- Urutan isi: header, **kotak Kesimpulan berwarna**, **section ANSWER**, bagian A, B, C, D (tabel perbandingan), E (PL), sumber. Pembagian halaman otomatis: tabel besar boleh terpotong antar baris (header diulang), judul section menempel ke barisnya.
+- Header **tidak** memuat paragraf Input Capt Juma dan Asumsi (sejak Update JSA Mobile 1.0 2026-11-11). Field `input_capt_juma` dan `asumsi` boleh tetap diisi di JSON sebagai catatan kerja, tetapi tidak ditampilkan.
 - Footer setiap halaman:
   `Analyzed by Capt. Jumardi AR., SE. MMar. AFNI. MM. - Tanggal Analisa: <tanggal>` dan nomor halaman.
 - Ukuran huruf otomatis 8,5 pt dan mengecil sampai minimal 6,5 pt supaya muat 2 halaman.
@@ -100,3 +100,11 @@ Simpan di `data/json/YYYY-MM-DD_<TICKER>.json`. Contoh lengkap dan valid: `tools
 
 Bagian E diakhiri baris ringkasan: status, zona entry, jangan kejar, target harian PL, dan stop PL
 (cukup satu baris dengan `No` = `—`).
+
+## Section ANSWER (wajib)
+Field JSON `answer`: daftar 2 objek `{"pertanyaan", "jawaban", "penjelasan"}`, ditampilkan setelah kotak Kesimpulan.
+- Judul section **ANSWER** berwarna **magenta**.
+- `jawaban` hanya boleh `YA` atau `TIDAK`. Sel jawaban di-highlight **hijau** untuk YA dan **merah** untuk TIDAK. Skrip memberi `CATATAN` kalau selain itu.
+- Pertanyaan 1 (tetap): "Apakah masih ada peluang entry sekarang untuk mendapatkan profit 5-10%?" Jawab dari harga terakhir, resistance, stop, dan R/R. Boleh menyebut zona entry alternatif, tanpa menyebut persentase peluang.
+- Pertanyaan 2 (tetap): "Apakah saham cocok untuk jangka panjang? (pengembangan perusahaan dan dividen)" Jawab dari pengembangan usaha, kinerja, dan riwayat dividen (cari lewat WebSearch, lihat `C-berita-fundamental.md`). Tulis dasar sumbernya.
+- Penjelasan ringkas: sekitar 3-5 baris per jawaban supaya PDF tetap 2 halaman.

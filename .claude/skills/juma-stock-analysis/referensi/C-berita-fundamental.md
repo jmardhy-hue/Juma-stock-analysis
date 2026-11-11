@@ -21,3 +21,4 @@ Kolom: `No | Tahap | Item | Temuan | Dampak | Tanggal`
 - Tahap 12 boleh lebih dari satu baris (satu berita satu baris, maksimal 4 yang paling penting).
 - Tahap 13 biasanya 2–3 baris (kinerja, valuasi, utang), ditutup satu baris **Prospek hold**: bagaimana prospek kalau semua target meleset.
 - Sumber berita dicantumkan di bagian Sumber di halaman 2.
+- Untuk section ANSWER pertanyaan 2 (jangka panjang): cari juga **pengembangan perusahaan** (ekspansi, capex, segmen baru) dan **riwayat dividen** (tahun buku terakhir, payout, kebijakan). Tulis dasar sumbernya.

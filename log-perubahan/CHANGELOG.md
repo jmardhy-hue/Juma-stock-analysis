@@ -5,6 +5,20 @@ Format: `## YYYY-MM-DD — vX.Y — judul singkat`, lalu poin "Berubah" dan "Ala
 
 ---
 
+## 2026-11-11 — Update JSA Mobile 1.0 2026-11-11 — section ANSWER, header ringkas, tanpa ringkasan di chat
+**Berubah**
+- PDF: paragraf Input Capt Juma dan paragraf Asumsi di atas Kesimpulan dihapus dari tampilan.
+- PDF: section **ANSWER** baru setelah Kesimpulan. Judul magenta. 2 pertanyaan tetap (peluang profit 5-10% sekarang; cocok jangka panjang: pengembangan perusahaan dan dividen). Jawaban wajib YA (highlight hijau) atau TIDAK (highlight merah).
+- `buat_pdf.py`: render section ANSWER, validasi jawaban YA/TIDAK, header tanpa paragraf bawah, pembagian halaman otomatis (tabel besar boleh terpotong antar baris, tanpa paksa pindah halaman sebelum bagian C).
+- Skill, `format-pdf.md`, `C-berita-fundamental.md`, `CLAUDE.md`, dan `contoh-hasil.json` disesuaikan.
+- Aturan chat: hasil analisa tidak dijelaskan di chat. Cukup baris progres dan file PDF.
+
+**Alasan**
+- Permintaan Capt Juma: PDF lebih ringkas, ada jawaban langsung untuk dua pertanyaan keputusan, dan chat tidak diisi ringkasan.
+
+**Tidak berubah**
+- Rumus indikator, ambang pola PL, aturan analisa, dan 23 tahap.
+
 ## 2026-11-11 — v1.2 — Pengambilan data harga otomatis
 **Berubah**
 - Skrip baru `tools/ambil_data.py <TICKER>`: ambil ~50 bar harian dari stockanalysis.com lewat curl, simpan ke `data/harga/<TICKER>.csv`, gabung dengan CSV lama tanpa tanggal ganda.
