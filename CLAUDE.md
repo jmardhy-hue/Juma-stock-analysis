@@ -38,7 +38,7 @@ Hasil akhirnya adalah **satu file PDF A4 dua halaman** di `hasil-analisa/YYYY-MM
 |---|---|
 | `.claude/skills/juma-stock-analysis/` | Skill utama: alur 5 bagian (A–E), 23 tahap, format PDF |
 | `.claude/skills/pola-pantul-lantai/` | Skill Pola Pantul Lantai (bagian E), juga bisa dipanggil sendiri |
-| `tools/` | Skrip Python: `indikator.py`, `pola_pantul_lantai.py`, `buat_pdf.py`, `cek_setup.py` |
+| `tools/` | Skrip Python: `ambil_data.py`, `indikator.py`, `pola_pantul_lantai.py`, `buat_pdf.py`, `cek_setup.py` |
 | `tools/contoh/` | Contoh CSV dan JSON untuk uji sistem |
 | `data/harga/` | CSV harga harian per ticker |
 | `data/json/` | Bahan PDF (`YYYY-MM-DD_TICKER.json`). Dipakai ulang kalau PDF perlu dibuat ulang |

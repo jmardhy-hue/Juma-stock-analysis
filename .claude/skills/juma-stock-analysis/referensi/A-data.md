@@ -12,8 +12,8 @@ Yang sering tidak ada dan harus dicatat sebagai **asumsi**:
 Jangan berhenti untuk bertanya. Catat asumsinya, lalu lanjut.
 
 ## Tahap 2 — Ambil data harga
-- Sumber yang terbukti bisa diambil: WebFetch `https://www.investing.com/equities/<slug>-historical-data`.
-- Cari slug lewat WebSearch, misalnya `investing.com <TICKER> historical data`.
+- Cara utama (otomatis): `python tools/ambil_data.py <TICKER>`. Skrip mengambil ~50 bar dari stockanalysis.com lewat curl, menggabungkan dengan CSV lama, dan langsung menyimpan `data/harga/<TICKER>.csv`.
+- Investing.com tidak dipakai lagi: memblokir akses otomatis (403).
 - Butuh **minimal 26 bar** supaya MACD terhitung, dan **minimal 21 bar** untuk pola PL. Kalau halaman hanya memberi sedikit bar, gabungkan dengan CSV lama di `data/harga/`.
 - Kalau Investing.com gagal, coba sumber lain dan sebutkan sumbernya di PDF.
 

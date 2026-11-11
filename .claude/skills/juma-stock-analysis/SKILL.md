@@ -20,8 +20,8 @@ Baca `referensi/A-data.md`.
 | No | Tahap | Inti |
 |---|---|---|
 | 1 | Baca input | Ticker, harga, rentang buy, target harian, mingguan, bulanan. Yang kurang dicatat sebagai asumsi |
-| 2 | Ambil data harga | WebSearch slug Investing.com, lalu WebFetch halaman historical data |
-| 3 | Simpan CSV | `data/harga/<TICKER>.csv`. Cek close terakhir vs harga dari Capt Juma |
+| 2 | Ambil data harga | `python tools/ambil_data.py <TICKER>` (stockanalysis.com, langsung jadi CSV). Cadangan: CSV yang dikirim Capt Juma |
+| 3 | Cek CSV | `data/harga/<TICKER>.csv` dibuat skrip. Bandingkan close terakhir dengan harga dari Capt Juma, tulis selisihnya |
 | 4 | Jalankan indikator | `python tools/indikator.py data/harga/<TICKER>.csv --harga <harga> --target <t1,t2,...>` |
 
 ## Bagian B — Teknikal (tahap 5–11)

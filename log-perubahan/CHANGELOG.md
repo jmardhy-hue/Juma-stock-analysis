@@ -5,6 +5,19 @@ Format: `## YYYY-MM-DD — vX.Y — judul singkat`, lalu poin "Berubah" dan "Ala
 
 ---
 
+## 2026-11-11 — v1.2 — Pengambilan data harga otomatis
+**Berubah**
+- Skrip baru `tools/ambil_data.py <TICKER>`: ambil ~50 bar harian dari stockanalysis.com lewat curl, simpan ke `data/harga/<TICKER>.csv`, gabung dengan CSV lama tanpa tanggal ganda.
+- Skill tahap 2-3 dan `referensi/A-data.md` memakai skrip ini. Investing.com ditinggalkan.
+- `CLAUDE.md` peta folder menyebut `ambil_data.py`.
+
+**Alasan**
+- Investing.com memblokir akses otomatis (403), padahal Capt Juma ingin alur berjalan sendiri sampai PDF.
+- stockanalysis.com memblokir User-Agent browser palsu tetapi menerima curl biasa; WebFetch tidak dipakai karena jalurnya terpisah dari proxy.
+
+**Tidak berubah**
+- Rumus indikator, ambang pola PL, aturan analisa, dan format PDF.
+
 ## 2026-11-11 — Setup di sesi cloud (Juma Stock Analysis Mobile)
 - Folder disalin dari Google Drive (Juma Stock Analysis Mobile) ke repo; ukuran tiap file dicocokkan dengan aslinya.
 - Python 3.13.18, reportlab 5.0.1, font DejaVu Sans (Linux).
