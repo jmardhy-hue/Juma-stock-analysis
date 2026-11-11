@@ -1,0 +1,116 @@
+{
+  "ticker": "KOTA",
+  "nama_emiten": "DMS Propertindo Tbk",
+  "tanggal_analisa": "2026-11-11",
+  "tanggal_data": "2026-11-11",
+  "harga_terakhir": "54",
+  "sumber_harga": "stockanalysis.com (close bar terakhir 53)",
+  "status_harga": "belum terkonfirmasi live",
+  "input_capt_juma": "KOTA, harga trkhr 54, bs buy antara 53 - 55, target harian 56 - 57, target seminggu: 58 - 59, target sebulan: 60 - 62. Modal 500000",
+  "asumsi": [
+    "Belum punya posisi",
+    "Harga 54 dari Capt Juma, data CSV menunjukkan close 11 Nov = 53 (selisih Rp1, perlu dicek live)",
+    "Stop tidak diberikan: JSA tetapkan close <50 (di bawah swing low 50)",
+    "Biaya beli 0,15% dan jual 0,25%; fraksi harga Rp1 untuk harga <200 (perlu diverifikasi)",
+    "Jumlah lot dan rugi kalau masuk adalah perkiraan indikatif"
+  ],
+  "modal": 500000,
+  "kesimpulan": {
+    "sikap": "HOLD",
+    "judul_sikap": "Tunggu, jangan entry sekarang. Tidak ada booking besok",
+    "ringkasan": "Oversold berat (RSI 16,1), tetapi harga masih jatuh: −52,6% dari high 20 hari, turun 8 hari beruntun dari 92 ke 53, dan 11 Nov ditutup dekat low (close location 0,12) dengan volume 1 miliar lembar. Belum ada tanda dasar. Ada juga rencana rights issue besar (dilusi sampai 90%) yang menekan harga. Oversold bukan sinyal beli.",
+    "entry": "Belum ada booking. Kalau pemicu terpenuhi, booking 54 (sekitar 92 lot untuk modal Rp500 ribu, perkiraan indikatif)",
+    "stop": "Kalau nanti masuk: close harian <50 (swing low 50), eksekusi pre-closing hari itu atau pre-opening besok",
+    "take_profit": [
+      {"level": "TP1", "harga": "57", "persen": "+5,6% dari 54", "porsi_persen": 50},
+      {"level": "TP2", "harga": "59", "persen": "+9,3%", "porsi_persen": 25},
+      {"level": "TP3", "harga": "62", "persen": "+14,8%", "porsi": "sisa"}
+    ],
+    "pl": "TIDAK ADA POLA (3/6) — syarat wajib gagal: hari sinyal tidak naik (−1,85%). Konteks oversold dan lantai lolos, tapi close di low dan belum ada pembalikan.",
+    "pemicu_perubahan": "Jadi BUY (booking 54, stop <50) kalau 12 Nov low ≥50, close naik (>53) dan close di atas open. Batal total kalau close <50 atau low baru di bawah 50 tanpa pemulihan. Analisa ulang malam berikutnya.",
+    "booking": null,
+    "posisi": null,
+    "stop_harga": 50
+  },
+  "bagian": [
+    {
+      "kode": "A",
+      "judul": "Persiapan & data",
+      "kolom": ["No", "Tahap", "Hasil", "Keterangan"],
+      "lebar": [0.05, 0.17, 0.48, 0.30],
+      "baris": [
+        ["1", "Baca input", "Harga 54, buy 53–55, harian 56–57, mingguan 58–59, bulanan 60–62, modal Rp500 ribu", "Stop dan posisi tidak disebut → asumsi belum punya posisi"],
+        ["2", "Ambil data harga", "50 bar harian, 3 Sep – 11 Nov 2026", "stockanalysis.com"],
+        ["3", "Simpan & cocokkan", "Close 11 Nov = 53, input 54 (selisih 1 tick)", "Belum terkonfirmasi live"],
+        ["4", "Jalankan indikator", "indikator.py berhasil, MACD tersedia", "≥26 bar"]
+      ]
+    },
+    {
+      "kode": "B",
+      "judul": "Teknikal",
+      "kolom": ["No", "Tahap", "Indikator", "Nilai", "Arti", "Sinyal"],
+      "lebar": [0.05, 0.13, 0.15, 0.19, 0.41, 0.07],
+      "baris": [
+        ["5", "Tren & MA", "MA5 / MA10 / MA20 / MA50", "55 / 63 / 79 / 136", "Harga di bawah semua MA, −31% dari MA20. Downtrend tajam", "▼"],
+        ["6", "Momentum", "RSI14", "16,1", "Oversold ekstrem, belum ada pembalikan", "●"],
+        ["6", "Momentum", "MACD hist", "+0,33 (sebelumnya −0,01)", "Perbaikan sangat tipis, MACD line −23,5", "●"],
+        ["7", "Volatilitas", "ATR14 · %B", "9,0 (17,1%) · 0,14", "Sangat volatil. Target harian 56–57 hanya 0,2–0,3 ATR", "●"],
+        ["8", "Volume / flow", "RVOL · CMF · MFI", "4,8x · −0,41 · 26,5", "Volume besar saat harga turun, aliran dana keluar", "▼"],
+        ["9", "Struktur & S/R", "Bar terakhir · S · R", "O55 H60 L52 C53", "Ekor atas, close dekat low (0,12). Support 50, 44. Resistance 56–57, 60, 68", "▼"],
+        ["10", "Status oversold", "Composite (proxy)", "85/100 · DD −52,6%", "Tekanan jual sangat tinggi. Bukan peluang rebound", "●"],
+        ["11", "Jarak target", "Target vs ATR", "57 +0,3 · 59 +0,6 · 62 +0,9 ATR", "Jarak wajar, tapi tren masih turun", "●"]
+      ]
+    },
+    {
+      "kode": "C",
+      "judul": "Berita & fundamental",
+      "kolom": ["No", "Tahap", "Item", "Temuan", "Dampak", "Tanggal"],
+      "lebar": [0.05, 0.13, 0.15, 0.48, 0.09, 0.10],
+      "baris": [
+        ["12", "Berita & katalis", "Rights issue", "PMHMETD I lebih dari Rp4,4 triliun untuk akuisisi lahan Surabaya dan Maja, dilusi sampai 90,46%, RUPSLB 6 Okt 2026", "−", "Agu–Okt 2026"],
+        ["12", "Berita & katalis", "Riwayat bursa", "Pernah disuspensi BEI 7 Mei 2026 karena kenaikan harga ekstrem. Harga sempat 220 awal September, kini 53", "−", "2026"],
+        ["12", "Berita & katalis", "Berita terbaru", "Tidak ditemukan berita November 2026. Cek jadwal cum/ex rights issue dan UMA sebelum pre-opening", "0", "Nov 2026"],
+        ["13", "Fundamental", "Prospek hold", "Spekulatif: harga digerakkan aksi korporasi, dilusi besar. Laporan keuangan terbaru tidak terverifikasi", "−", "—"]
+      ]
+    },
+    {
+      "kode": "D",
+      "judul": "Validasi rencana Capt Juma",
+      "kolom": ["No", "Parameter", "Data Capt Juma", "Hasil analisa JSA", "Catatan"],
+      "lebar": [0.05, 0.17, 0.20, 0.33, 0.25],
+      "baris": [
+        ["1", "Harga terakhir", "54", "53 (close 11 Nov di CSV)", "Selisih Rp1, belum terkonfirmasi live"],
+        ["2", "Entry", "53–55", "Tidak ada booking malam ini", "Belum ada tanda dasar"],
+        ["3", "Stop / batal", "—", "Close harian <50", "Risiko ~7–8% dari entry"],
+        ["4", "Target harian", "56–57 (+3,7% – +5,6%)", "Jarak wajar (0,2–0,3 ATR)", "Resistance 56–57"],
+        ["5", "Target 1 minggu", "58–59 (+7,4% – +9,3%)", "Perlu volume pembeli dan close > MA5", "R/R 59 sekitar 1,0"],
+        ["6", "Target 1 bulan", "60–62 (+11,1% – +14,8%)", "Ambisius di downtrend", "Resistance 60, 68"],
+        ["7", "Entry lagi (HPP)", "—", "Belum relevan. Syarat: ekor bawah + close > open di atas 50", "Tanpa average down otomatis"],
+        ["8", "Perlu turunkan HPP?", "—", "Tidak relevan", "Belum punya posisi"],
+        ["9", "Status oversold", "—", "RSI 16,1 · composite 85/100", "Tekanan jual tinggi, bukan sinyal beli"],
+        ["10", "Sikap", "—", "**HOLD** (tunggu, tanpa booking)", "BUY kalau 12 Nov low ≥50 dan close naik"]
+      ]
+    },
+    {
+      "kode": "E",
+      "judul": "Pola Pantul Lantai (PL)",
+      "kolom": ["No", "Syarat PL", "Jenis", "Ambang", "Nilai", "Hasil"],
+      "lebar": [0.05, 0.22, 0.10, 0.27, 0.27, 0.09],
+      "baris": [
+        ["18", "Konteks oversold", "Wajib", "RSI <35 dan close ≤ MA20 − 1,5 ATR", "RSI 16,1 · −2,85 ATR", "LOLOS"],
+        ["19", "Lantai bertahan", "Wajib", "Low ≥ low 5 hari − 1,5%", "Low 52 vs lantai 50", "LOLOS"],
+        ["20", "Hari sinyal naik", "Wajib", "Close > close kemarin", "−1,85%", "GAGAL"],
+        ["21", "Tidak ditutup di low", "Pendukung", "Close location ≥0,35", "0,12", "GAGAL"],
+        ["22", "Volume ikut di hari naik", "Pendukung", "RVOL ≥0,7x", "4,8x (hari turun)", "GAGAL"],
+        ["23", "Momentum membaik", "Pendukung", "MACD hist naik", "−0,0 → +0,3", "LOLOS"],
+        ["—", "**TIDAK ADA POLA 3/6**", "", "Syarat wajib gagal", "Pakai analisa standar", ""]
+      ]
+    }
+  ],
+  "sumber": [
+    {"judul": "stockanalysis.com – data harga KOTA", "url": "https://stockanalysis.com/quote/idx/KOTA/"},
+    {"judul": "BCA Sekuritas – DMS Propertindo berencana gelar rights issue", "url": "https://bcasekuritas.co.id/latest-news/news/dms-propertindo-berencana-gelar-rights-issue"},
+    {"judul": "Kontan – harga saham KOTA sudah melambung, tak kejar momentum", "url": "https://insight.kontan.co.id/news/harga-saham-kota-sudah-melambung-tinggi-investor-disarankan-tak-kejar-momentum"},
+    {"judul": "Investortrust – saham CTTH dan KOTA disuspensi", "url": "https://investortrust.id/market/102538/dipicu-lompatan-harga-saham-ctth-dan-kota-akhirnya-disuspensi"}
+  ]
+}
