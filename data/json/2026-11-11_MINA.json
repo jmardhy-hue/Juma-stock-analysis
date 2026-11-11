@@ -1,0 +1,115 @@
+{
+  "ticker": "MINA",
+  "nama_emiten": "Sanurhasta Mitra Tbk",
+  "tanggal_analisa": "2026-11-11",
+  "tanggal_data": "2026-11-11",
+  "harga_terakhir": "152",
+  "sumber_harga": "stockanalysis.com",
+  "status_harga": "belum terkonfirmasi live",
+  "input_capt_juma": "MINA, harga trkhr 152, bs buy antara 151 - 153, target harian 156 - 158, target seminggu: 160 - 164, target sebulan: 168 - 173. Modal 500ribu rupiah",
+  "asumsi": [
+    "Belum punya posisi",
+    "Stop tidak diberikan: JSA tetapkan close <139 (di bawah low 11 Nov = 140)",
+    "Biaya beli 0,15% dan jual 0,25%; fraksi harga Rp1 untuk harga <200 (perlu diverifikasi)",
+    "Berita November 2026 tidak ditemukan; data fundamental terbaru tidak terverifikasi"
+  ],
+  "modal": 500000,
+  "kesimpulan": {
+    "sikap": "HOLD",
+    "judul_sikap": "Tunggu, jangan entry sekarang. Tidak ada booking besok",
+    "ringkasan": "Harga 152 ada di dalam rentang buy, tetapi bar 11 Nov menembus 190 lalu ditutup di 152 (ekor atas panjang, close location 0,24) dengan volume 18x rata-rata. Itu tanda penolakan di atas, bukan konfirmasi. Naik 2 hari berturut-turut (+18,8% dari 128), jadi entry sekarang berarti mengejar. Target harian 156–158 hanya 0,2–0,3 ATR, tapi R/R ke sana kurang dari 1 terhadap stop 139.",
+    "entry": "Belum ada booking. Kalau pemicu terpenuhi, booking 151 (sekitar 32 lot untuk modal Rp500 ribu, perkiraan indikatif)",
+    "stop": "Kalau nanti masuk: close harian <139 (di bawah low 11 Nov 140), eksekusi pre-closing hari itu atau pre-opening besok",
+    "take_profit": [
+      {"level": "TP1", "harga": "158", "persen": "+4,6% dari 151", "porsi_persen": 50},
+      {"level": "TP2", "harga": "164", "persen": "+8,6%", "porsi_persen": 25},
+      {"level": "TP3", "harga": "173", "persen": "+14,6%", "porsi": "sisa"}
+    ],
+    "pl": "TIDAK ADA POLA (4/6) — syarat wajib gagal: konteks oversold (RSI 44,9, harga +0,38 ATR di atas MA20). Pakai analisa standar.",
+    "pemicu_perubahan": "Jadi BUY (booking 151) kalau 12 Nov ditutup ≥152 dengan low ≥140 dan volume tetap tinggi (RVOL ≥1x). Batal total (jangan masuk) kalau close <139. Analisa ulang malam berikutnya.",
+    "booking": null,
+    "posisi": null,
+    "stop_harga": 139
+  },
+  "bagian": [
+    {
+      "kode": "A",
+      "judul": "Persiapan & data",
+      "kolom": ["No", "Tahap", "Hasil", "Keterangan"],
+      "lebar": [0.05, 0.17, 0.48, 0.30],
+      "baris": [
+        ["1", "Baca input", "Harga 152, buy 151–153, harian 156–158, mingguan 160–164, bulanan 168–173, modal Rp500 ribu", "Stop dan posisi tidak disebut → asumsi belum punya posisi"],
+        ["2", "Ambil data harga", "50 bar harian, 3 Sep – 11 Nov 2026", "stockanalysis.com"],
+        ["3", "Simpan & cocokkan", "Close 11 Nov = 152, sama dengan input", "Belum terkonfirmasi live"],
+        ["4", "Jalankan indikator", "indikator.py berhasil, MACD tersedia", "≥26 bar"]
+      ]
+    },
+    {
+      "kode": "B",
+      "judul": "Teknikal",
+      "kolom": ["No", "Tahap", "Indikator", "Nilai", "Arti", "Sinyal"],
+      "lebar": [0.05, 0.13, 0.15, 0.19, 0.41, 0.07],
+      "baris": [
+        ["5", "Tren & MA", "MA5 / MA10 / MA20 / MA50", "137 / 134 / 145 / 199", "Harga di atas MA5–20 (+4,5% dari MA20), masih −23,7% dari MA50. Pemulihan di dalam downtrend", "●"],
+        ["6", "Momentum", "RSI14", "44,9", "Netral, naik dari zona rendah", "●"],
+        ["6", "Momentum", "MACD hist", "+3,9 (sebelumnya +2,4)", "Momentum membaik, MACD line masih −17,7", "▲"],
+        ["7", "Volatilitas", "ATR14 · %B", "17,4 (11,5%) · 0,60", "Sangat volatil. Target harian 156–158 hanya 0,2–0,3 ATR", "●"],
+        ["8", "Volume / flow", "RVOL · CMF · MFI", "18,3x · −0,27 · 84,5", "Volume ledakan tapi CMF negatif: ada distribusi di ekor atas. MFI sudah tinggi", "▼"],
+        ["9", "Struktur & S/R", "Bar terakhir · S · R", "O146 H190 L140 C152", "Ekor atas panjang (close location 0,24). Support 140, 129, 117. Resistance 156–158, 174–177, 190–193", "▼"],
+        ["10", "Status oversold", "Composite (proxy)", "15/100 · DD −21,2%", "Tidak oversold. Bukan peluang rebound", "●"],
+        ["11", "Jarak target", "Target vs ATR", "158 +0,3 · 164 +0,7 · 173 +1,2 ATR", "Harian dan mingguan wajar secara jarak, bulanan butuh tembus 174–177", "●"]
+      ]
+    },
+    {
+      "kode": "C",
+      "judul": "Berita & fundamental",
+      "kolom": ["No", "Tahap", "Item", "Temuan", "Dampak", "Tanggal"],
+      "lebar": [0.05, 0.13, 0.15, 0.48, 0.09, 0.10],
+      "baris": [
+        ["12", "Berita & katalis", "Berita 1–4 minggu", "Tidak ditemukan berita baru November 2026 yang menjelaskan lonjakan 11 Nov. Cek UMA/suspensi sebelum pre-opening", "0", "Nov 2026"],
+        ["12", "Berita & katalis", "Riwayat bursa", "Pernah disuspensi BEI (Agu 2025), harga sering lonjak dan jatuh tajam. Feb 2026 membantah kaitan kasus pasar modal Bareskrim", "−", "2025–2026"],
+        ["13", "Fundamental", "Valuasi & kinerja", "Rugi bersih Q3 2025 Rp3,8 miliar, pendapatan 2025 ~Rp9 miliar. Laporan 2026 tidak terverifikasi. Satu media menilai harga wajar jauh di bawah pasar", "−", "2025"],
+        ["13", "Fundamental", "Prospek hold", "Spekulatif: proyek Sanur Bali belum jadi pendapatan utama, harga digerakkan sentimen. Tinjau ulang kalau close <139", "−", "—"]
+      ]
+    },
+    {
+      "kode": "D",
+      "judul": "Validasi rencana Capt Juma",
+      "kolom": ["No", "Parameter", "Data Capt Juma", "Hasil analisa JSA", "Catatan"],
+      "lebar": [0.05, 0.17, 0.20, 0.33, 0.25],
+      "baris": [
+        ["1", "Harga terakhir", "152", "152 (close 11 Nov)", "Belum terkonfirmasi live"],
+        ["2", "Entry", "151–153", "Tidak ada booking malam ini", "Ekor atas 190 belum terkonfirmasi"],
+        ["3", "Stop / batal", "—", "Close harian <139", "Risiko ~8,6% dari 152"],
+        ["4", "Target harian", "156–158 (+2,6% – +3,9%)", "Jarak wajar (0,2–0,3 ATR)", "Resistance 156–158, R/R hanya 0,4–0,5"],
+        ["5", "Target 1 minggu", "160–164 (+5,3% – +7,9%)", "164 realistis kalau volume bertahan", "R/R 164 sekitar 1,0"],
+        ["6", "Target 1 bulan", "168–173 (+10,5% – +13,8%)", "Perlu tembus 174–177", "R/R 173 sekitar 1,7"],
+        ["7", "Entry lagi (HPP)", "—", "Belum relevan. Syarat: ekor bawah + close > open di atas 140", "Tanpa average down otomatis"],
+        ["8", "Perlu turunkan HPP?", "—", "Tidak relevan", "Belum punya posisi"],
+        ["9", "Status oversold", "—", "RSI 44,9 · composite 15/100", "Tidak oversold"],
+        ["10", "Sikap", "—", "**HOLD** (tunggu, tanpa booking)", "BUY kalau 12 Nov close ≥152, low ≥140"]
+      ]
+    },
+    {
+      "kode": "E",
+      "judul": "Pola Pantul Lantai (PL)",
+      "kolom": ["No", "Syarat PL", "Jenis", "Ambang", "Nilai", "Hasil"],
+      "lebar": [0.05, 0.22, 0.10, 0.27, 0.27, 0.09],
+      "baris": [
+        ["18", "Konteks oversold", "Wajib", "RSI <35 dan close ≤ MA20 − 1,5 ATR", "RSI 44,9 · +0,38 ATR", "GAGAL"],
+        ["19", "Lantai bertahan", "Wajib", "Low ≥ low 5 hari − 1,5%", "Low 140 vs lantai 117", "LOLOS"],
+        ["20", "Hari sinyal naik", "Wajib", "Close > close kemarin", "+2,70%", "LOLOS"],
+        ["21", "Tidak ditutup di low", "Pendukung", "Close location ≥0,35", "0,24", "GAGAL"],
+        ["22", "Volume ikut di hari naik", "Pendukung", "RVOL ≥0,7x", "18,3x", "LOLOS"],
+        ["23", "Momentum membaik", "Pendukung", "MACD hist naik", "+2,4 → +3,9", "LOLOS"],
+        ["—", "**TIDAK ADA POLA 4/6**", "", "Syarat wajib gagal", "Pakai analisa standar", ""]
+      ]
+    }
+  ],
+  "sumber": [
+    {"judul": "stockanalysis.com – data harga MINA", "url": "https://stockanalysis.com/quote/idx/MINA/"},
+    {"judul": "Bisnis.com – Sanurhasta (MINA) tegaskan tak terkait kasus pasar modal", "url": "https://market.bisnis.com/read/20260205/7/1950637/sanurhasta-mina-tegaskan-tak-terkait-dalam-kasus-pasar-modal-yang-diusut-bareskrim"},
+    {"judul": "Investortrust – BEI suspensi saham MINA", "url": "https://investortrust.id/market/74962/bei-suspensi-saham-mina-sebaliknya-irsx-dibuka"},
+    {"judul": "Kabarbursa – MINA bikin was-was, harga meroket fundamental merosot", "url": "https://www.kabarbursa.com/market-hari-ini/mina-bikin-was-was-harga-meroket-fundamental-merosot"}
+  ]
+}
