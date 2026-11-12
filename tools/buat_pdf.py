@@ -1,6 +1,7 @@
 """Buat PDF hasil analisa Juma Stock Analysis (A4, margin 1,27 cm, 2 halaman).
 
 Pemakaian:
+    python tools/buat_pdf.py data/json/2026-11-11_KOTA.json --eksternal   (PDF eksternal 1 halaman, *_eksternal.pdf)
     python tools/buat_pdf.py data/json/2026-11-11_COIN.json
     python tools/buat_pdf.py tools/contoh/contoh-hasil.json --keluar uji.pdf
 
@@ -35,6 +36,15 @@ TANDA_TANGAN = "Analyzed by Capt. Jumardi AR., SE. MMar. AFNI. MM."
 MARGIN = 1.27 * cm
 TINGGI_FOOTER = 0.75 * cm
 MAKS_HALAMAN = 2
+# Mode PDF eksternal (1 halaman, untuk dibagikan): nama diganti, hanya Kesimpulan, ANSWER, C, dan E bila muat.
+EKSTERNAL = False
+DENGAN_E = True
+MERK = "Juma Stock Analysis"
+GANTI_EKSTERNAL = [("Juma Stock Analysis", "J Stock Analysis"), ("JUMA STOCK ANALYSIS", "J STOCK ANALYSIS"),
+                   ("Capt. Jumardi AR., SE. MMar. AFNI. MM.", "CJ"), ("Capt Juma", "CJ")]
+KETERANGAN_EKSTERNAL = ("Halaman ini adalah halaman hasil saja. Halaman analisa lengkap terdiri dari 2 halaman "
+                        "dan tersimpan hanya untuk konsumsi internal.")
+UKURAN_MIN_E_EKSTERNAL = 7.0  # kalau bagian E baru muat di bawah ukuran ini, bagian E dibuang
 UKURAN_AWAL, UKURAN_MIN, LANGKAH = 8.5, 6.5, 0.25
 
 BULAN = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
@@ -87,6 +97,9 @@ def siapkan_font():
 def aman(teks):
     """Ganti karakter yang tidak ada di font, escape XML, dan ubah **x** jadi tebal."""
     teks = "" if teks is None else str(teks)
+    if EKSTERNAL:
+        for lama, baru in GANTI_EKSTERNAL:
+            teks = teks.replace(lama, baru)
     glyph = FONT["glyph"]
     hasil = []
     for ch in teks:
@@ -158,7 +171,7 @@ def tabel_bagian(bag, g, lebar_total):
 
 def header(d, g, lebar):
     kiri = Paragraph(
-        f'<font size="{g["sel"].fontSize - 0.5}" color="#C9D3E6">JUMA STOCK ANALYSIS · disusun oleh JSA</font><br/>'
+        f'<font size="{g["sel"].fontSize - 0.5}" color="#C9D3E6">{MERK.upper()} · disusun oleh JSA</font><br/>'
         f'<font size="{g["sel"].fontSize + 7}"><b>{aman(d["ticker"])}</b></font>'
         f'<font size="{g["sel"].fontSize + 1.5}">  {aman(d.get("nama_emiten", ""))}</font>',
         ParagraphStyle("hk", parent=g["sel"], textColor=colors.white, leading=g["sel"].fontSize + 9))
@@ -347,9 +360,11 @@ def susun(d, ukuran, lebar):
                    "D": "Validasi rencana Capt Juma", "E": "Pola Pantul Lantai (PL)"}
     for bag in d.get("bagian", []):
         kode = str(bag.get("kode", "")).upper()
+        if EKSTERNAL and kode not in (("C", "E") if DENGAN_E else ("C",)):
+            continue
         judul = Paragraph(f'{aman(kode)}. {aman(bag.get("judul") or nama_bagian.get(kode, ""))}', g["judul"])
         isi += [CondPageBreak(ukuran * 5.5), judul, tabel_bagian(bag, g, lebar)]
-    if d.get("sumber"):
+    if d.get("sumber") and not EKSTERNAL:
         isi.append(Paragraph("Sumber", g["judul"]))
         daftar = []
         for i, s in enumerate(d["sumber"], start=1):
@@ -365,6 +380,9 @@ def susun(d, ukuran, lebar):
         "<b>Catatan:</b> Analisa bersyarat, bukan rekomendasi atau perintah beli/jual. JSA bukan penasihat berlisensi. "
         "Skor dan Oversold Composite bukan probabilitas. Status UNCALIBRATED. Fraksi harga dan batas ARB/ARA perlu "
         "diverifikasi. Biaya pulang-pergi ~0,4% adalah asumsi.", g["kecil"]))
+    if EKSTERNAL:
+        isi.append(Spacer(1, 3))
+        isi.append(Paragraph("<b>Keterangan:</b> " + KETERANGAN_EKSTERNAL, g["kecil"]))
     return isi
 
 
@@ -383,14 +401,14 @@ def render(d, ukuran, total_halaman, tujuan):
         canvas.drawString(MARGIN, y + 9, f"{TANDA_TANGAN} - Tanggal Analisa: {tgl}")
         canvas.setFont(FONT["biasa"], 6.5)
         canvas.setFillColor(colors.HexColor("#6B7280"))
-        canvas.drawString(MARGIN, y + 1, f"Juma Stock Analysis · {d.get('ticker', '')} · analisa bersyarat, bukan rekomendasi")
+        canvas.drawString(MARGIN, y + 1, f"{MERK} · {d.get('ticker', '')} · analisa bersyarat, bukan rekomendasi")
         canvas.drawRightString(lebar_hal - MARGIN, y + 9,
                                f"Halaman {doc.page}" + (f" / {total_halaman}" if total_halaman else ""))
         canvas.restoreState()
 
     doc = SimpleDocTemplate(tujuan, pagesize=A4, leftMargin=MARGIN, rightMargin=MARGIN, topMargin=MARGIN,
                             bottomMargin=MARGIN + TINGGI_FOOTER + 4,
-                            title=f"Juma Stock Analysis - {d.get('ticker', '')} - {d.get('tanggal_analisa', '')}",
+                            title=f"{MERK} - {d.get('ticker', '')} - {d.get('tanggal_analisa', '')}",
                             author=TANDA_TANGAN, subject="Analisa saham BEI", creator="JSA")
     hitung = {"n": 0}
 
@@ -435,7 +453,18 @@ def periksa(d):
     return pesan
 
 
+def cari_ukuran(d, mulai, minimum, maks):
+    """Turunkan ukuran huruf sampai isi muat dalam `maks` halaman (atau sampai `minimum`)."""
+    ukuran = mulai
+    while True:
+        n = render(d, ukuran, None, io.BytesIO())
+        if n <= maks or ukuran - LANGKAH < minimum - 1e-9:
+            return ukuran, n
+        ukuran -= LANGKAH
+
+
 def main():
+    global EKSTERNAL, DENGAN_E, MERK, TANDA_TANGAN
     a = sys.argv[1:]
     if not a or a[0] in ("-h", "--help"):
         print(__doc__)
@@ -445,21 +474,28 @@ def main():
     for p in periksa(d):
         print(f"CATATAN: {p}")
     font = siapkan_font()
+    eksternal = "--eksternal" in a
+    if eksternal:
+        EKSTERNAL, MERK, TANDA_TANGAN = True, "J Stock Analysis", "Analyzed by CJ"
 
     if "--keluar" in a:
         tujuan = a[a.index("--keluar") + 1]
     else:
         tgl = str(d["tanggal_analisa"])[:10]
         folder = os.path.join(AKAR, "hasil-analisa", tgl[:7])
-        tujuan = os.path.join(folder, f"{tgl}_{d['ticker'].upper()}.pdf")
+        tujuan = os.path.join(folder, f"{tgl}_{d['ticker'].upper()}" + ("_eksternal" if eksternal else "") + ".pdf")
     os.makedirs(os.path.dirname(os.path.abspath(tujuan)), exist_ok=True)
 
-    ukuran = UKURAN_AWAL
-    while True:
-        n = render(d, ukuran, None, io.BytesIO())
-        if n <= MAKS_HALAMAN or ukuran - LANGKAH < UKURAN_MIN - 1e-9:
-            break
-        ukuran -= LANGKAH
+    maks = MAKS_HALAMAN
+    if eksternal:
+        maks = 1
+        DENGAN_E = True
+        ukuran, n = cari_ukuran(d, UKURAN_AWAL, UKURAN_MIN_E_EKSTERNAL, maks)
+        if n > maks:
+            DENGAN_E = False
+            ukuran, n = cari_ukuran(d, UKURAN_AWAL, UKURAN_MIN, maks)
+    else:
+        ukuran, n = cari_ukuran(d, UKURAN_AWAL, UKURAN_MIN, maks)
     try:
         render(d, ukuran, n, tujuan)
     except PermissionError:
@@ -470,8 +506,10 @@ def main():
         render(d, ukuran, n, tujuan)
     print(f"PDF          : {os.path.abspath(tujuan)}")
     print(f"Halaman      : {n} | ukuran huruf {ukuran:g} pt | font {font}")
-    if n > MAKS_HALAMAN:
-        print(f"PERINGATAN: lebih dari {MAKS_HALAMAN} halaman walau huruf sudah {UKURAN_MIN} pt. "
+    if eksternal:
+        print("Bagian       : Kesimpulan, ANSWER, C" + (", E" if DENGAN_E else " (E dibuang: tidak muat 1 halaman)"))
+    if n > maks:
+        print(f"PERINGATAN: lebih dari {maks} halaman walau huruf sudah {UKURAN_MIN} pt. "
               "Ringkas teks di JSON lalu jalankan ulang.")
         return 2
     return 0

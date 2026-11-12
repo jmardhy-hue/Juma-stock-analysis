@@ -62,7 +62,8 @@ Baca `referensi/format-pdf.md`, lalu:
 2. Jalankan `python tools/buat_pdf.py data/json/YYYY-MM-DD_<TICKER>.json`.
    PDF tersimpan di `hasil-analisa/YYYY-MM/YYYY-MM-DD_<TICKER>.pdf`.
 3. Kalau skrip memberi `PERINGATAN: lebih dari 2 halaman` (exit code 2), ringkas teks di JSON (bukan menghapus baris wajib), lalu jalankan ulang.
-4. Kirim PDF ke Capt Juma dengan tool kirim file. **Jangan menjelaskan hasil di chat** (tanpa ringkasan): cukup baris progres tahap dan file PDF-nya.
+4. Buat juga PDF eksternal 1 halaman: `python tools/buat_pdf.py data/json/YYYY-MM-DD_<TICKER>.json --eksternal` (hasil `..._eksternal.pdf`, aturannya di `referensi/format-pdf.md`).
+5. Kirim kedua PDF ke Capt Juma dengan tool kirim file. **Jangan menjelaskan hasil di chat** (tanpa ringkasan): cukup baris progres tahap dan file PDF-nya.
 
 Entry selalu ditulis sebagai **satu harga booking terbaik** sebelum market buka (lihat `CLAUDE.md`, bagian "Cara entry dan exit").
 Jumlah lot dan rugi rupiah dihitung otomatis oleh `buat_pdf.py` dari `modal`, `kesimpulan.booking.harga`, dan `kesimpulan.stop_harga`.

@@ -108,3 +108,11 @@ Field JSON `answer`: daftar 2 objek `{"pertanyaan", "jawaban", "penjelasan"}`, d
 - Pertanyaan 1 (tetap): "Apakah masih ada peluang entry sekarang untuk mendapatkan profit 5-10%?" Jawab dari harga terakhir, resistance, stop, dan R/R. Boleh menyebut zona entry alternatif, tanpa menyebut persentase peluang.
 - Pertanyaan 2 (tetap): "Apakah saham cocok untuk jangka panjang? (pengembangan perusahaan dan dividen)" Jawab dari pengembangan usaha, kinerja, dan riwayat dividen (cari lewat WebSearch, lihat `C-berita-fundamental.md`). Tulis dasar sumbernya.
 - Penjelasan ringkas: sekitar 3-5 baris per jawaban supaya PDF tetap 2 halaman.
+
+## PDF eksternal (1 halaman, untuk dibagikan)
+Perintah: `python tools/buat_pdf.py data/json/YYYY-MM-DD_<TICKER>.json --eksternal`. Hasil: `hasil-analisa/YYYY-MM/YYYY-MM-DD_<TICKER>_eksternal.pdf`.
+- **1 halaman** A4 dengan margin yang sama. Huruf otomatis mengecil sampai muat.
+- Isi hanya: kotak **Kesimpulan**, section **ANSWER**, bagian **C**, dan bagian **E** kalau muat (huruf minimal 7 pt). Kalau E tidak muat, E dibuang. Bagian A, B, D, dan Sumber tidak ditampilkan.
+- Nama diganti otomatis di semua teks: `Juma Stock Analysis` menjadi `J Stock Analysis`, `Capt. Jumardi AR., SE. MMar. AFNI. MM.` menjadi `CJ`, dan `Capt Juma` menjadi `CJ`.
+- Di bagian bawah ada keterangan: halaman ini hanya halaman hasil, halaman analisa lengkap (2 halaman) tersimpan untuk konsumsi internal.
+- PDF internal 2 halaman tetap dibuat seperti biasa dan tidak diubah.

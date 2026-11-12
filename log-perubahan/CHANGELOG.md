@@ -5,6 +5,21 @@ Format: `## YYYY-MM-DD — vX.Y — judul singkat`, lalu poin "Berubah" dan "Ala
 
 ---
 
+## 2026-11-12 — Update JSA 1.1 mobile 2026-11-12 — PDF eksternal 1 halaman
+**Berubah**
+- `buat_pdf.py` punya mode `--eksternal`: PDF 1 halaman A4 (margin sama) untuk dibagikan, disimpan sebagai `YYYY-MM-DD_<TICKER>_eksternal.pdf`.
+- Isi eksternal: Kesimpulan, ANSWER, C, dan E kalau muat (huruf min 7 pt, kalau tidak muat E dibuang). Tanpa A, B, D, dan Sumber.
+- Nama diganti otomatis: `Juma Stock Analysis` menjadi `J Stock Analysis`; `Capt. Jumardi AR., SE. MMar. AFNI. MM.` dan `Capt Juma` menjadi `CJ`.
+- Keterangan di bagian bawah: halaman ini hanya halaman hasil, analisa lengkap 2 halaman hanya untuk konsumsi internal.
+- `cek_setup.py` menguji PDF eksternal. Skill (langkah 4-5), `format-pdf.md`, dan `CLAUDE.md` disesuaikan: tiap analisa menghasilkan dua PDF.
+- Uji pertama: saham KOTA (bahan JSON dari analisa 11 Nov, ditambah section ANSWER).
+
+**Alasan**
+- Capt Juma perlu versi ringkas untuk dibagikan keluar tanpa membuka identitas dan data kerja internal.
+
+**Tidak berubah**
+- PDF internal 2 halaman, rumus indikator, ambang pola PL, dan 23 tahap.
+
 ## 2026-11-11 — Update JSA Mobile 1.0 2026-11-11 — section ANSWER, header ringkas, tanpa ringkasan di chat
 **Berubah**
 - PDF: paragraf Input Capt Juma dan paragraf Asumsi di atas Kesimpulan dihapus dari tampilan.

@@ -1,0 +1,468 @@
+{
+  "ticker": "KOTA",
+  "nama_emiten": "DMS Propertindo Tbk",
+  "tanggal_analisa": "2026-11-11",
+  "tanggal_data": "2026-11-11",
+  "harga_terakhir": "53",
+  "sumber_harga": "StockAnalysis (Investing.com gagal diakses)",
+  "status_harga": "harga tertunda (delayed), belum terkonfirmasi live",
+  "input_capt_juma": "KOTA, harga trkhr 54, bs buy antara 53 - 55, target harian 56 - 57, target seminggu: 58 - 59, target sebulan: 60 - 62. Modal 1juta rupiah",
+  "asumsi": [
+    "Belum punya posisi",
+    "Stop tidak disebut, JSA memakai close <50",
+    "Biaya beli 0,15% dan jual 0,25%",
+    "Fraksi Rp1 untuk harga <200 dan harga minimum papan reguler Rp50 (perlu diverifikasi)",
+    "Batas ARB/ARA perlu diverifikasi"
+  ],
+  "modal": 1000000,
+  "kesimpulan": {
+    "sikap": "HOLD",
+    "judul_sikap": "Tunggu, jangan booking dulu",
+    "ringkasan": "KOTA sangat oversold (RSI 15,8, −53% dari high 20 hari), tetapi 11 Nov sempat naik ke 60 lalu ditutup 53 dekat low dengan volume terbesar sebulan (RVOL 4,8x) dan CMF −0,41. Itu tanda distribusi, belum ada pantulan. Ada beban besar: rights issue sampai 100 miliar saham baru (±90% dilusi) dan RUPSLB 27 Nov. Rentang buy 53–55 belum didukung sinyal pembalikan.",
+    "booking": null,
+    "posisi": null,
+    "entry": "Tidak ada booking untuk 12 Nov. Hari sinyal turun dan ditutup dekat low, jadi syarat entry belum terpenuhi",
+    "stop_harga": 50,
+    "stop": "Acuan kalau nanti entry: close harian <50 (low 10 Nov, juga harga minimum papan reguler). Eksekusi pre-closing hari itu atau pre-opening besok",
+    "take_profit": [
+      {
+        "level": "TP1",
+        "harga": "56–57",
+        "persen": "+5,7% – +7,5%",
+        "porsi_persen": 50
+      },
+      {
+        "level": "TP2",
+        "harga": "59–60",
+        "persen": "+11,3% – +13,2%",
+        "porsi_persen": 30
+      },
+      {
+        "level": "TP3",
+        "harga": "62",
+        "persen": "+17,0%",
+        "porsi": "sisa"
+      }
+    ],
+    "pl": "TIDAK ADA POLA 3/6 — gagal: hari sinyal turun (−1,85%), close dekat low (0,12), volume besar di hari turun. Jangan pakai rencana PL, ikuti rencana standar.",
+    "pemicu_perubahan": "Jadi BUY kalau ada hari ditutup naik dengan low ≥50, close location ≥0,35 dan volume ikut (pola PL aktif). Booking lalu di sekitar close − 0,35 ATR. Gambaran risiko: booking 53 dengan modal Rp1 jt = 188 lot, rugi ±Rp60 rb (−6%) kalau close <50. Batalkan rencana kalau close <50 atau ada kabar harga rights issue jauh di bawah harga pasar."
+  },
+  "answer": [
+    {
+      "pertanyaan": "Apakah masih ada peluang entry sekarang untuk mendapatkan profit 5-10%?",
+      "jawaban": "TIDAK",
+      "penjelasan": "Belum. Target +5% = 55,7 dan +10% = 58,3 sudah masuk resistance 56-57 dan 60 (ditolak 11 Nov). Hari sinyal turun -1,85% dengan volume 4,77x dan CMF -0,41 (distribusi), pola PL belum aktif (3/6). Stop (close <50) berjarak -5,7%: R/R kasar ~0,9 ke +5% dan ~1,8 ke +10%, di tengah beban rights issue. Baru dipertimbangkan kalau ada hari naik dengan low ≥50 dan volume ikut."
+    },
+    {
+      "pertanyaan": "Apakah saham cocok untuk jangka panjang? (pengembangan perusahaan dan dividen)",
+      "jawaban": "TIDAK",
+      "penjelasan": "Pengembangan: ada proyek strategis ±186 ha (Urbanova Edu Hub Surabaya ±Rp3 T bersama mitra China, Accola Sport Centre BSD) dan pendapatan naik (H1 2026 Rp67,29 M vs Rp17,36 M). Tetapi rights issue sampai 100 miliar saham (±90% dilusi) untuk akuisisi ±Rp4,4 T, pernah disuspensi Mei 2026, dan harga turun -53% dalam 20 hari. Dividen: tidak ada riwayat dividen yang ditemukan. Cocok untuk trading selektif, bukan investasi jangka panjang. Dasar: ringkasan hasil pencarian."
+    }
+  ],
+  "bagian": [
+    {
+      "kode": "A",
+      "judul": "Persiapan & data",
+      "kolom": [
+        "No",
+        "Tahap",
+        "Hasil",
+        "Keterangan"
+      ],
+      "lebar": [
+        0.05,
+        0.17,
+        0.48,
+        0.3
+      ],
+      "baris": [
+        [
+          "1",
+          "Baca input",
+          "Harga 54, buy 53–55, target harian 56–57, mingguan 58–59, bulanan 60–62. Modal Rp1.000.000",
+          "Asumsi: belum punya posisi, stop tidak disebut"
+        ],
+        [
+          "2",
+          "Ambil data harga",
+          "51 bar harian, 2 Sep – 11 Nov 2026",
+          "StockAnalysis. Investing.com gagal (alamat tidak ditemukan / 404)"
+        ],
+        [
+          "3",
+          "Simpan & cocokkan",
+          "Close 11 Nov = **53**. Input 54 adalah close 10 Nov",
+          "Volume 10 Nov beda tipis antar sumber (CSV lama 898.835.600 vs StockAnalysis 898.815.300 lembar)"
+        ],
+        [
+          "4",
+          "Jalankan indikator",
+          "indikator.py berhasil, MA50 dan MACD tersedia",
+          "Target dihitung dari 53"
+        ]
+      ]
+    },
+    {
+      "kode": "B",
+      "judul": "Teknikal",
+      "kolom": [
+        "No",
+        "Tahap",
+        "Indikator",
+        "Nilai",
+        "Arti",
+        "Sinyal"
+      ],
+      "lebar": [
+        0.05,
+        0.13,
+        0.15,
+        0.19,
+        0.41,
+        0.07
+      ],
+      "baris": [
+        [
+          "5",
+          "Tren & MA",
+          "MA5 / MA10 / MA20",
+          "55,2 / 63,4 / 78,8",
+          "Harga −4% dari MA5, −32,7% dari MA20, MA50 136. Downtrend tajam sejak 230 (2 Sep)",
+          "▼"
+        ],
+        [
+          "6",
+          "Momentum",
+          "RSI14",
+          "15,8",
+          "Oversold ekstrem (<30). Belum ada tanda RSI berbalik naik",
+          "●"
+        ],
+        [
+          "6",
+          "Momentum",
+          "MACD hist",
+          "+0,44 (sebelumnya +0,11)",
+          "Penurunan melambat, MACD line masih −23,8",
+          "▲"
+        ],
+        [
+          "7",
+          "Volatilitas",
+          "ATR14 · %B",
+          "9,1 (17,2%) · 0,13",
+          "Volatilitas sangat tinggi untuk saham Rp50-an. Rata TR 5 hari 6,0",
+          "●"
+        ],
+        [
+          "8",
+          "Volume / flow",
+          "RVOL · CMF · MFI",
+          "4,77x · −0,41 · 26,5",
+          "Volume besar tapi ditutup dekat low: penjual dominan. Distribusi",
+          "▼"
+        ],
+        [
+          "9",
+          "Struktur & S/R",
+          "Bar · S · R",
+          "O55 H60 L52 C53 · CL 0,12",
+          "Ekor atas panjang (60 ditolak). Support 52, 50. Resistance 56–57, 60, 64",
+          "▼"
+        ],
+        [
+          "10",
+          "Status oversold",
+          "Composite (proxy)",
+          "86/100 · DD −53,5%",
+          "Tekanan jual sangat tinggi, −2,83 ATR dari MA20. Bukan peluang rebound",
+          "●"
+        ],
+        [
+          "11",
+          "Jarak target",
+          "Target vs ATR",
+          "56 +0,3 · 57 +0,4 · 59 +0,7 · 62 +1,0 ATR",
+          "Harian masih wajar dari sisi ATR, tapi 56–57 adalah resistance",
+          "●"
+        ]
+      ]
+    },
+    {
+      "kode": "C",
+      "judul": "Berita & fundamental",
+      "kolom": [
+        "No",
+        "Tahap",
+        "Item",
+        "Temuan",
+        "Dampak",
+        "Tanggal"
+      ],
+      "lebar": [
+        0.05,
+        0.13,
+        0.15,
+        0.48,
+        0.09,
+        0.1
+      ],
+      "baris": [
+        [
+          "12",
+          "Berita & katalis",
+          "Rights issue",
+          "PMHMETD I sampai 100 miliar saham seri B, nominal Rp25, ±90% dari modal setelah RI. Harga pelaksanaan belum diketahui",
+          "−",
+          "Agu–Nov"
+        ],
+        [
+          "12",
+          "Berita & katalis",
+          "RUPSLB",
+          "Agenda RI dan akuisisi ADI & MGP (±Rp4,4 T). Sumber menyebut 27 Nov (recording 4 Nov); sumber lain 6 Okt. Perlu cek IDX",
+          "−",
+          "27 Nov"
+        ],
+        [
+          "12",
+          "Berita & katalis",
+          "Riwayat bursa",
+          "Suspensi Mei 2026 dan permintaan penjelasan BEI Agustus. Status UMA terbaru tidak ditemukan",
+          "0",
+          "Mei–Agu"
+        ],
+        [
+          "13",
+          "Fundamental",
+          "Kinerja & valuasi",
+          "Pendapatan Q2 Rp33,7 M (stabil QoQ), laba H1 Rp16,1 M. Market cap ±Rp559 M, PBV 0,44. Laba TTM Rp114,8 M (StockAnalysis) tidak cocok dengan laba H1, perlu cek",
+          "0",
+          "H1 2026"
+        ],
+        [
+          "13",
+          "Fundamental",
+          "Utang",
+          "Total utang ±Rp557 M, kas Rp112 M, DER 0,43",
+          "0",
+          "—"
+        ],
+        [
+          "13",
+          "Fundamental",
+          "Prospek hold",
+          "Lemah untuk trading: dilusi besar dan harga dekat Rp50 membatasi ruang. Kalau target meleset, jangan dipaksa jadi investasi",
+          "−",
+          "—"
+        ]
+      ]
+    },
+    {
+      "kode": "D",
+      "judul": "Validasi rencana Capt Juma",
+      "kolom": [
+        "No",
+        "Parameter",
+        "Data Capt Juma",
+        "Hasil analisa JSA",
+        "Catatan"
+      ],
+      "lebar": [
+        0.05,
+        0.17,
+        0.2,
+        0.33,
+        0.25
+      ],
+      "baris": [
+        [
+          "1",
+          "Harga terakhir",
+          "54",
+          "53 (close 11 Nov)",
+          "54 = close 10 Nov"
+        ],
+        [
+          "2",
+          "Entry",
+          "53–55",
+          "**Tidak ada booking** untuk 12 Nov",
+          "Hari sinyal turun dengan volume besar"
+        ],
+        [
+          "3",
+          "Stop / batal",
+          "—",
+          "Close harian <50",
+          "≈ −5,7% dari 53. Rp50 juga harga minimum (verifikasi)"
+        ],
+        [
+          "4",
+          "Target harian",
+          "56–57 (+5,7% – +7,5%)",
+          "Mungkin hanya kalau ada pantulan; 56–57 resistance",
+          "0,3–0,4 ATR"
+        ],
+        [
+          "5",
+          "Target 1 minggu",
+          "58–59 (+9,4% – +11,3%)",
+          "Perlu tembus 57 dengan volume",
+          "Di bawah high 60 (11 Nov)"
+        ],
+        [
+          "6",
+          "Target 1 bulan",
+          "60–62 (+13,2% – +17,0%)",
+          "Ambisius: 60 baru ditolak, MA10 63",
+          "Beban rights issue"
+        ],
+        [
+          "7",
+          "Entry lagi (HPP)",
+          "—",
+          "Tidak relevan",
+          "Tanpa average down otomatis"
+        ],
+        [
+          "8",
+          "Perlu turunkan HPP?",
+          "—",
+          "Tidak relevan, belum punya posisi",
+          "—"
+        ],
+        [
+          "9",
+          "Status oversold",
+          "—",
+          "RSI 15,8 · composite 86/100",
+          "Ekstrem, tapi belum berbalik"
+        ],
+        [
+          "10",
+          "Sikap",
+          "—",
+          "**HOLD** (tunggu, jangan entry)",
+          "Jadi BUY kalau pola PL aktif"
+        ]
+      ]
+    },
+    {
+      "kode": "E",
+      "judul": "Pola Pantul Lantai (PL)",
+      "kolom": [
+        "No",
+        "Syarat PL",
+        "Jenis",
+        "Ambang",
+        "Nilai",
+        "Hasil"
+      ],
+      "lebar": [
+        0.05,
+        0.22,
+        0.1,
+        0.27,
+        0.27,
+        0.09
+      ],
+      "baris": [
+        [
+          "18",
+          "Konteks oversold",
+          "Wajib",
+          "RSI <35 dan close ≤ MA20 − 1,5 ATR",
+          "RSI 15,8 · −2,83 ATR",
+          "LOLOS"
+        ],
+        [
+          "19",
+          "Lantai bertahan",
+          "Wajib",
+          "Low ≥ low 5 hari − 1,5%",
+          "Low 52 vs lantai 50",
+          "LOLOS"
+        ],
+        [
+          "20",
+          "Hari sinyal naik",
+          "Wajib",
+          "Close > close kemarin",
+          "−1,85%",
+          "GAGAL"
+        ],
+        [
+          "21",
+          "Tidak ditutup di low",
+          "Pendukung",
+          "Close location ≥0,35",
+          "0,12",
+          "GAGAL"
+        ],
+        [
+          "22",
+          "Volume ikut di hari naik",
+          "Pendukung",
+          "RVOL ≥0,7x di hari naik",
+          "4,77x tapi di hari turun",
+          "GAGAL"
+        ],
+        [
+          "23",
+          "Momentum membaik",
+          "Pendukung",
+          "MACD hist naik",
+          "+0,11 → +0,44",
+          "LOLOS"
+        ],
+        [
+          "—",
+          "**TIDAK ADA POLA 3/6**",
+          "",
+          "Syarat wajib gagal (hari sinyal turun)",
+          "Jangan pakai rencana PL, ikuti rencana standar",
+          ""
+        ]
+      ]
+    }
+  ],
+  "sumber": [
+    {
+      "judul": "StockAnalysis – data historis KOTA",
+      "url": "https://stockanalysis.com/quote/idx/KOTA/history/"
+    },
+    {
+      "judul": "StockAnalysis – statistik KOTA",
+      "url": "https://stockanalysis.com/quote/idx/KOTA/statistics/"
+    },
+    {
+      "judul": "Industry.co.id – RUPSLB KOTA, rights issue dan akuisisi 2 perusahaan",
+      "url": "https://www.industry.co.id/read/158911/gelar-rupslb-kota-minta-restu-rights-issue-dan-akuisisi-2-perusahaan"
+    },
+    {
+      "judul": "Kabarbursa – KOTA siap gelar rights issue 100 miliar saham",
+      "url": "https://www.kabarbursa.com/market-hari-ini/kota-siap-gelar-right-issue-100-miliar-saham-dana-digunakan-untuk-akuisisi-dua-perusahaan"
+    },
+    {
+      "judul": "Katadata – kinerja bisnis KOTA menjelang rights issue",
+      "url": "https://katadata.co.id/finansial/bursa/6a964c2673540/menilik-kinerja-bisnis-kota-kala-saham-melonjak-306-menjelang-rights-issue"
+    },
+    {
+      "judul": "Investortrust – saham CTTH dan KOTA disuspensi",
+      "url": "https://investortrust.id/market/102538/dipicu-lompatan-harga-saham-ctth-dan-kota-akhirnya-disuspensi"
+    },
+    {
+      "judul": "Ajaib – dividen KOTA (belum ada data)",
+      "url": "https://ajaib.co.id/saham/aset/KOTA/dividen"
+    },
+    {
+      "judul": "Investortrust – Urbanova Edu Hub Rp3 triliun",
+      "url": "https://investortrust.id/business/112588/dms-propertindo-gandeng-bumn-china-bangun-urbanova-edu-hub-rp-3-triliun"
+    },
+    {
+      "judul": "RCTI+ – percepatan proyek 186 hektare",
+      "url": "https://www.rctiplus.com/news/detail/ekonomi/5415469/dorong-kinerja-lebih-progresif--dms-propertindo--kota--siapkan-percepatan-proyek-186-hektare"
+    }
+  ]
+}

@@ -31,7 +31,7 @@ Kalau ada data yang kurang (modal, stop, posisi yang sudah dimiliki, asal harga)
 - **Exit** boleh saat market tutup (booking) atau saat market berjalan. TP bisa dibooking sebagai order jual limit, porsinya dalam lot.
 - Kesimpulan selalu memuat **jumlah lot** dan **rugi dalam rupiah kalau stop kena**.
 
-Hasil akhirnya adalah **satu file PDF A4 dua halaman** di `hasil-analisa/YYYY-MM/`. Tidak ada file .md hasil.
+Hasil akhirnya adalah **satu file PDF A4 dua halaman** (internal) di `hasil-analisa/YYYY-MM/`, ditambah **satu PDF eksternal 1 halaman** (`*_eksternal.pdf`) untuk dibagikan keluar: nama diganti, hanya Kesimpulan, ANSWER, C, dan E. Tidak ada file .md hasil.
 
 ## Peta folder
 | Folder / file | Isi |
@@ -67,7 +67,7 @@ Hasil akhirnya adalah **satu file PDF A4 dua halaman** di `hasil-analisa/YYYY-MM
 
 ## Tampilan di chat
 - Tulis **satu baris progres** per tahap (lihat skill). Jangan menulis ulang seluruh angka mentah.
-- Setelah PDF jadi, kirim file PDF-nya. **Jangan menjelaskan hasil analisa di chat** (tanpa ringkasan); prosesnya cukup lewat baris progres.
+- Setelah PDF jadi, kirim kedua file PDF-nya (internal dan eksternal). **Jangan menjelaskan hasil analisa di chat** (tanpa ringkasan); prosesnya cukup lewat baris progres.
 
 ## Aturan perubahan sistem
 Setiap kali skill, skrip, ambang, atau format diubah, **tambahkan entri di `log-perubahan/CHANGELOG.md`**

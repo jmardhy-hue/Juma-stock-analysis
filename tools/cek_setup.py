@@ -82,6 +82,12 @@ def main():
         if ok and "Helvetica" in out:
             print("        catatan: font Arial/DejaVu tidak ditemukan, beberapa simbol (− ≥ ▲) diganti teks biasa.")
 
+        eks = os.path.join(tmp, "uji-eksternal.pdf")
+        kode, out = jalankan("tools/buat_pdf.py", "tools/contoh/contoh-hasil.json", "--eksternal", "--keluar", eks)
+        info = [b for b in out.splitlines() if b.startswith("Halaman")]
+        ok = kode == 0 and os.path.exists(eks) and "Halaman      : 1 " in out
+        cek("buat_pdf.py --eksternal (PDF 1 halaman)", ok, info[0] if info else out[-300:])
+
     lolos = all(hasil)
     print(f"\nHasil: {'SEMUA LOLOS — sistem siap dipakai' if lolos else 'ADA YANG GAGAL — lihat baris [GAGAL] di atas'}")
     return 0 if lolos else 1
